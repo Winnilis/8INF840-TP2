@@ -1,0 +1,10 @@
+8
+node id | out | URL
+1 1 http://mail.uqac.ca/send
+2 1 http://mail.uqac.ca/mymail
+3 2 http://moodle.uqac.ca/uqac
+4 2 http://moodle.uqac.ca/home
+5 1 http://mail.utc.fr/mymail
+6 1 http://mail.utc.fr/send
+7 3 http://moodle.utc.fr/contact
+8 1 http://moodle.utc.fr/home
