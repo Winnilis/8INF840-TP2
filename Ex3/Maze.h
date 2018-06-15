@@ -1,12 +1,18 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
 enum GenerationType
 {
 	RANDOM, BACKTRACKING
+};
+
+enum SolvingMethod
+{
+	BFS, A_STAR
 };
 
 class Maze
@@ -22,6 +28,8 @@ public:
 	Maze(const Maze& maze);
 	~Maze();
 	const Maze& operator=(const Maze& maze);
+
+	vector<pair<int, int>> solveMaze(pair<int, int> startingPoint, pair<int, int> endingPoint, SolvingMethod method);
 
 	friend wostream& operator<< (wostream& stream, const Maze& maze);
 

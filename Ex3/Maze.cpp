@@ -1,6 +1,8 @@
 ﻿#include <vector>
 #include <algorithm>
 #include <ctime>
+#include <queue>
+#include <iostream>
 
 #include "Maze.h"
 
@@ -34,6 +36,124 @@ const Maze& Maze::operator=(const Maze& maze)
 	return *this;
 }
 
+vector<pair<int, int>> Maze::solveMaze(pair<int, int> startingPoint, pair<int, int> endingPoint, SolvingMethod method)
+{
+	vector<pair<int, int>> directionList;
+	directionList.insert(directionList.begin(), endingPoint);
+
+	vector<vector<pair<int, int>>> predecessors(height, vector<pair<int, int>>(width, pair<int, int>(-1, -1)));
+	predecessors[startingPoint.first][startingPoint.second] = startingPoint;
+
+	switch (method)
+	{
+	case BFS:
+	{
+		queue<pair<int, int>> explorationQueue;
+		explorationQueue.push(startingPoint);
+
+		while (!explorationQueue.empty())
+		{
+			pair<int, int> currentPosition = explorationQueue.front();
+			explorationQueue.pop();
+
+			if (currentPosition == endingPoint)
+			{
+				break;
+			}
+
+			for (int direction : {0b1000, 0b0100, 0b0010, 0b0001})
+			{
+				pair<int, int> neighbourPosition = getNeighbourPosition(currentPosition, direction);
+				if ((array[currentPosition.first][currentPosition.second] & direction) == 0
+					&& predecessors[neighbourPosition.first][neighbourPosition.second] == pair<int, int>(-1, -1))
+				{
+					explorationQueue.push(neighbourPosition);
+					predecessors[neighbourPosition.first][neighbourPosition.second] = currentPosition;
+				}
+			}
+		}
+
+		break;
+	}
+
+	case A_STAR:
+	{
+		vector<vector<int>> weights(height, vector<int>(width, -1));
+		weights[startingPoint.first][startingPoint.second] = 0;
+
+		vector<vector<bool>> isClosed(height, vector<bool>(width, false));
+
+		vector<pair<int, int>> explorationQueue;
+		explorationQueue.push_back(startingPoint);
+
+		while (!explorationQueue.empty())
+		{
+			int lowestWeight = -1;
+			vector<pair<int, int>>::iterator positionToDelete;
+
+			for (vector<pair<int, int>>::iterator it = explorationQueue.begin(); it != explorationQueue.end(); ++it)
+			{
+				if (lowestWeight > weights[(*it).first][(*it).second] || lowestWeight == -1)
+				{
+					lowestWeight = weights[(*it).first][(*it).second];
+					positionToDelete = it;
+				}
+			}
+
+			pair<int, int> currentPosition = *positionToDelete;
+			explorationQueue.erase(positionToDelete);
+			isClosed[currentPosition.first][currentPosition.second] = true;
+			
+			if (currentPosition == endingPoint)
+			{
+				break;
+			}
+
+			for (int direction : {0b1000, 0b0100, 0b0010, 0b0001})
+			{
+				pair<int, int> neighbourPosition = getNeighbourPosition(currentPosition, direction);
+				if ((array[currentPosition.first][currentPosition.second] & direction) == 0
+					&& !isClosed[neighbourPosition.first][neighbourPosition.second]
+					&& (weights[neighbourPosition.first][neighbourPosition.second] == -1
+						|| weights[neighbourPosition.first][neighbourPosition.second]
+							> weights[currentPosition.first][currentPosition.second] + 1))
+				{
+					weights[neighbourPosition.first][neighbourPosition.second] = weights[currentPosition.first][currentPosition.second] + 1;
+					predecessors[neighbourPosition.first][neighbourPosition.second] = currentPosition;
+					explorationQueue.push_back(neighbourPosition);
+				}
+			}
+		}
+
+		break;
+	}
+	}
+
+	wcout << "### Adjacency matrix ###\n\n";
+
+	for (int i = 0; i < height; ++i)
+	{
+		for (int j = 0; j < width; ++j)
+		{
+			wcout << "[" << predecessors[i][j].first << ";" << predecessors[i][j].second << "]\t";
+		}
+		wcout << "\n";
+	}
+
+	wcout << "\n";
+
+	pair<int, int> prevPosition = predecessors[endingPoint.first][endingPoint.second], nextPosition = endingPoint;
+
+	while (nextPosition != startingPoint)
+	{
+		directionList.insert(directionList.begin(), prevPosition);
+		nextPosition = prevPosition;
+		prevPosition = predecessors[nextPosition.first][nextPosition.second];
+	}
+
+	return directionList;
+}
+
 void Maze::initializeArray()
 {
 	array = new int*[height];
@@ -59,8 +179,6 @@ void Maze::generateMaze()
 	int startingHeight = rand() % height;
 	int startingWidth = rand() % width;
 	cellList.push_back(pair<int, int>(startingHeight, startingWidth));
-
-	bool isExitCreated = false;
 
 	while (!cellList.empty())
 	{
@@ -97,16 +215,6 @@ void Maze::generateMaze()
 				array[newPosition.first][newPosition.second] ^= getOppositeDirection(direction);
 
 				break;
-			}
-			else if (!isExitCreated
-				&& (newPosition.first < 0
-					|| newPosition.second < 0
-					|| newPosition.first >= this->height
-					|| newPosition.second >= this->width))
-			{
-				isExitCreated = true;
-				hasValidNeighbourBeenFound = true;
-				array[position.first][position.second] ^= direction;
 			}
 		}
 
@@ -202,6 +310,8 @@ wostream& operator<<(wostream& stream, const Maze& maze)
 		stream << "\n";
 	}
 
+	stream << "\n";
+
 	for (int i = 0; i < maze.height + 1; ++i)
 	{
 		for (int j = 0; j < maze.width + 1; ++j)
@@ -293,6 +403,8 @@ wostream& operator<<(wostream& stream, const Maze& maze)
 
 		stream << L"\n";
 	}
+
+	stream << "\n";
 
 	return stream;
 }
