@@ -21,12 +21,33 @@
     <Text Include="test.edges.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
+    <Text Include="eu-2005.edges.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="eu-2005.nodes.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="in-2004.edges.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="in-2004.nodes.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Hypergraph.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Hypernode.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Url.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,6 +59,15 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Hypergraph.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Hypernode.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Url.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

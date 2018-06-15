@@ -76,6 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Program Files\cpp-netlib\netlib-0.12.0-final;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -112,17 +113,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="eu-2005.edges.txt" />
+    <Text Include="eu-2005.nodes.txt" />
+    <Text Include="in-2004.edges.txt" />
+    <Text Include="in-2004.nodes.txt" />
     <Text Include="test.edges.txt" />
     <Text Include="test.nodes.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Hypergraph.h" />
+    <ClInclude Include="Hypernode.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Url.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Hypergraph.cpp" />
+    <ClCompile Include="Hypernode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Url.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

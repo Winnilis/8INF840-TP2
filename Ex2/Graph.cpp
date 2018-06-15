@@ -18,6 +18,7 @@ int Graph::loadNodes(const char * filepath)
 
 	getline(f, line); // number of nodes to be loaded
 	size = stoi(line);
+	cout << size << " nodes to be loaded\nLoading...\n";
 
 	getline(f, line); //head of the table
 
@@ -47,6 +48,8 @@ int Graph::loadNodes(const char * filepath)
 	if (size != count)
 		cout << "WARNING : the number of nodes loaded is different than the number of nodes specified in the file ! (nodes might have been saved in an incorrect format ; check your file)\n";
 
+	cout << count << " nodes loaded\n";
+
 	return count;
 }
 
@@ -60,6 +63,7 @@ int Graph::loadEdges(const char * filepath)
 
 	getline(f, line); // number of edges to be loaded
 	size = stoi(line);
+	cout << size << " edges to be loaded\nLoading...\n";
 
 	getline(f, line); //head of the table
 
@@ -81,7 +85,9 @@ int Graph::loadEdges(const char * filepath)
 	f.close();
 
 	if (size != count)
-		cout << "WARNING : the number of nodes loaded is different than the number of nodes specified in the file ! (nodes might have been saved in an incorrect format ; check your file)\n";
+		cout << "WARNING : the number of nodes loaded is different than the number of nodes specified in the file ! (edges might have been saved in an incorrect format ; check your file)\n";
+
+	cout << count << " edges loaded\n";
 
 	return count;
 }

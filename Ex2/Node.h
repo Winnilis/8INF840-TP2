@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "Url.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ class Node
 {
 	int id;
 	int out;
-	string url;
+	Url url;
 	vector<Node*> next;
 
 public:
@@ -20,7 +21,7 @@ public:
 
 	int getId() { return id; }
 	int getOut() { return out; }
-	string getUrl() { return url; }
+	Url getUrl() { return url; }
 	vector<Node*>* getNext(){ return &next; }
 
 	// add a new given node as a next node
