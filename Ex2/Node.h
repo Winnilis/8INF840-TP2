@@ -13,6 +13,10 @@ class Node
 	Url url;
 	vector<Node*> next;
 
+	// ranking
+	int indegree;
+	int pagerank;
+
 public:
 	Node(int id, int out, string url);
 	~Node();
@@ -21,7 +25,7 @@ public:
 
 	int getId() { return id; }
 	int getOut() { return out; }
-	Url getUrl() { return url; }
+	Url* getUrl() { return &url; }
 	vector<Node*>* getNext(){ return &next; }
 
 	// add a new given node as a next node
@@ -29,5 +33,14 @@ public:
 	void addNext(Node* newNode);
 
 	string toString();
+
+	// Indegree
+	int getIndegree() { return indegree; }
+	void increaseIndegree() { indegree++; }
+
+	// Pagerank
+	void setPagerank(int val) { pagerank = val; }
+	int getPagerank() { return pagerank; }
+	void increasePagerank(int val) { pagerank += val; }
 };
 

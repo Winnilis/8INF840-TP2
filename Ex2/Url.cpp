@@ -45,9 +45,6 @@ Url::Url(string _urlstr)
 	getline(ss, this->path, '?');
 	getline(ss, this->query, '#');
 	getline(ss, this->fragment, ' ');
-
-	//TODO domain ??
-
 }
 
 

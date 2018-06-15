@@ -1,0 +1,23 @@
+21
+node id | out | URL
+1 1 http://who.int/home
+2 0 http://who.int/nations
+3 2 http://sante.gouv.fr/accueil
+4 2 http://sante.gouv.fr/contact
+5 0 http://sante.gouv.fr/recommandations
+6 3 http://monblogsante.fr/conseils
+7 0 http://monblogsante.fr/quisuisje
+8 0 http://masante.fr/douleurs
+9 1 http://masante.fr/soins
+10 3 http://masante.fr/FAQ
+11 1 http://quotidien-sante.fr/accueil
+12 1 http://quotidien-sante.fr/adresses
+13 1 http://sante.gouv.qc.ca/conseils
+14 1 http://sante.gouv.qc.ca/precautions
+15 2 http://sante-quebec.ca/bienvenue
+16 1 http://health.gov.uk/home
+17 1 http://health.gov.uk/contact
+18 2 http://behealthy.uk.co/welcome
+19 0 http://behealthy.uk.co/whoami
+20 0 http://myhealth.uk.co/products
+21 3 http://myhealth.uk.co/FAQ

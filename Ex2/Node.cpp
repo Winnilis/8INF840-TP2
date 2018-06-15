@@ -22,12 +22,6 @@ bool Node::operator==(const Node & other) const
 
 void Node::addNext(Node* newNode)
 {
-	for (auto it = this->next.begin(); it != this->next.end(); ++it)
-	{
-		if ((*it)->getId() == newNode->getId()) // if node already exists then ignore node creation
-			return;
-	}
-
 	this->next.push_back(newNode);
 }
 
@@ -44,7 +38,7 @@ string Node::toString()
 		}
 	}
 
-	str += " /\n";
+	str += " \t/ \t IN=" + to_string(indegree) + "\t PR=" + to_string(pagerank);
 
 	return str;
 }

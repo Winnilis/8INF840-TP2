@@ -11,28 +11,41 @@ enum granulation { page, domain, host };
 class Hypernode
 {
 	int id;
+	int indegree;
+	int pagerank;
+
 	string name;
 
-	//pages pointed by the hypernode
-	vector<Node*> next;
 	//node included in the hypernode
-	vector<Node*> elements;
+	vector<Node*>* elements;
+
+	vector<Hypernode*>* next;
+
 
 public:
 	Hypernode(int id, string name);
-	Hypernode(int id, Node* firstNode);
 	~Hypernode();
 
-	bool operator==(const Hypernode& other) const;
-
 	int getId() { return id; }
-	vector<Node*>* getNext() { return &next; }
-	vector<Node*>* getElements() { return &elements; }
+	int getIndegree() { return indegree; }
 
-	// add a new given node as a next node
-	// if the node is already in the next list, it isn't added again
-	void addNext(Node* newNode);
+	string getName() { return name; }
+	vector<Node*>* getElements() { return elements; }
+	vector<Hypernode*>* getNext() { return next; }
+
+	// add node to the element list and its next list to the hnode list
+	void addElement(Node* node);
+
+	// if node isn't in next list yet, add it
+	void addNext(Hypernode* hnode);
+
+	void increaseIndegree();
 
 	string toString();
+
+	// Pagerank
+	void setPagerank(int val) { pagerank = val; }
+	int getPagerank() { return pagerank; }
+	void increasePagerank(int val) { pagerank += val; }
 };
 
