@@ -3,6 +3,7 @@
 #include <ctime>
 #include <queue>
 #include <iostream>
+#include <cmath>
 
 #include "Maze.h"
 
@@ -78,8 +79,8 @@ vector<pair<int, int>> Maze::solveMaze(pair<int, int> startingPoint, pair<int, i
 
 	case A_STAR:
 	{
-		vector<vector<int>> weights(height, vector<int>(width, -1));
-		weights[startingPoint.first][startingPoint.second] = 0;
+		vector<vector<int>> weightsFromStart(height, vector<int>(width, -1));
+		weightsFromStart[startingPoint.first][startingPoint.second] = getManhattanDistanceToEnd(startingPoint, endingPoint);
 
 		vector<vector<bool>> isClosed(height, vector<bool>(width, false));
 
@@ -88,37 +89,40 @@ vector<pair<int, int>> Maze::solveMaze(pair<int, int> startingPoint, pair<int, i
 
 		while (!explorationQueue.empty())
 		{
-			int lowestWeight = -1;
-			vector<pair<int, int>>::iterator positionToDelete;
+			vector<pair<int, int>>::iterator positionToDelete = explorationQueue.begin();
+			int lowestWeight = weightsFromStart[(*positionToDelete).first][(*positionToDelete).second] + getManhattanDistanceToEnd(*positionToDelete, endingPoint);
 
-			for (vector<pair<int, int>>::iterator it = explorationQueue.begin(); it != explorationQueue.end(); ++it)
+			for (vector<pair<int, int>>::iterator it = explorationQueue.begin() + 1; it != explorationQueue.end(); ++it)
 			{
-				if (lowestWeight > weights[(*it).first][(*it).second] || lowestWeight == -1)
+				int weight = weightsFromStart[(*it).first][(*it).second] + getManhattanDistanceToEnd(*it, endingPoint);
+				if (lowestWeight > weight)
 				{
-					lowestWeight = weights[(*it).first][(*it).second];
+					lowestWeight = weight;
 					positionToDelete = it;
 				}
 			}
 
 			pair<int, int> currentPosition = *positionToDelete;
-			explorationQueue.erase(positionToDelete);
-			isClosed[currentPosition.first][currentPosition.second] = true;
 			
 			if (currentPosition == endingPoint)
 			{
 				break;
 			}
 
+			explorationQueue.erase(positionToDelete);
+			isClosed[currentPosition.first][currentPosition.second] = true;
+
 			for (int direction : {0b1000, 0b0100, 0b0010, 0b0001})
 			{
 				pair<int, int> neighbourPosition = getNeighbourPosition(currentPosition, direction);
+				int currentWeight = weightsFromStart[currentPosition.first][currentPosition.second];
+
 				if ((array[currentPosition.first][currentPosition.second] & direction) == 0
 					&& !isClosed[neighbourPosition.first][neighbourPosition.second]
-					&& (weights[neighbourPosition.first][neighbourPosition.second] == -1
-						|| weights[neighbourPosition.first][neighbourPosition.second]
-							> weights[currentPosition.first][currentPosition.second] + 1))
+					&& (weightsFromStart[neighbourPosition.first][neighbourPosition.second] == -1
+						|| weightsFromStart[neighbourPosition.first][neighbourPosition.second] > currentWeight + 1))
 				{
-					weights[neighbourPosition.first][neighbourPosition.second] = weights[currentPosition.first][currentPosition.second] + 1;
+					weightsFromStart[neighbourPosition.first][neighbourPosition.second] = currentWeight + 1;
 					predecessors[neighbourPosition.first][neighbourPosition.second] = currentPosition;
 					explorationQueue.push_back(neighbourPosition);
 				}
@@ -292,6 +296,11 @@ int Maze::getOppositeDirection(int direction)
 	default:
 		return -1;
 	}
+}
+
+int Maze::getManhattanDistanceToEnd(pair<int, int> position, pair<int, int> end)
+{
+	return abs(end.first - position.first) + abs(end.second - position.second);
 }
 
 int Maze::revertHorizontalBits(int direction)
