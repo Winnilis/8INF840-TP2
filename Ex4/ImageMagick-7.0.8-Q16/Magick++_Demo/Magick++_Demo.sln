@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "button", "button.vcxproj", "{66947221-E053-4DBE-8397-CE3D38160142}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demo", "demo.vcxproj", "{959D1266-1BB4-4AAB-8E85-CCF8504ACFCC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "detrans", "detrans.vcxproj", "{5A773CA8-287C-4BD9-8208-3B29CBC7062A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flip", "flip.vcxproj", "{147AA998-03F3-435B-BB04-C00216528F0C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gravity", "gravity.vcxproj", "{EB477D53-49E9-4260-859F-4A71C006F476}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "piddle", "piddle.vcxproj", "{5A94F19C-1108-4A37-9B75-8C8666203C72}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shapes", "shapes.vcxproj", "{54F315FB-C6F3-4D93-83C2-834B1ACC4704}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zoom", "zoom.vcxproj", "{9F063B17-FDD3-4577-B59F-BB8C4EC84AA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x86 = Release|x86
+		Template|x86 = Template|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66947221-E053-4DBE-8397-CE3D38160142}.Release|x86.ActiveCfg = Release|Win32
+		{66947221-E053-4DBE-8397-CE3D38160142}.Release|x86.Build.0 = Release|Win32
+		{66947221-E053-4DBE-8397-CE3D38160142}.Template|x86.ActiveCfg = Release|Win32
+		{66947221-E053-4DBE-8397-CE3D38160142}.Template|x86.Build.0 = Release|Win32
+		{959D1266-1BB4-4AAB-8E85-CCF8504ACFCC}.Release|x86.ActiveCfg = Release|Win32
+		{959D1266-1BB4-4AAB-8E85-CCF8504ACFCC}.Release|x86.Build.0 = Release|Win32
+		{959D1266-1BB4-4AAB-8E85-CCF8504ACFCC}.Template|x86.ActiveCfg = Template|Win32
+		{959D1266-1BB4-4AAB-8E85-CCF8504ACFCC}.Template|x86.Build.0 = Template|Win32
+		{5A773CA8-287C-4BD9-8208-3B29CBC7062A}.Release|x86.ActiveCfg = Release|Win32
+		{5A773CA8-287C-4BD9-8208-3B29CBC7062A}.Release|x86.Build.0 = Release|Win32
+		{5A773CA8-287C-4BD9-8208-3B29CBC7062A}.Template|x86.ActiveCfg = Template|Win32
+		{5A773CA8-287C-4BD9-8208-3B29CBC7062A}.Template|x86.Build.0 = Template|Win32
+		{147AA998-03F3-435B-BB04-C00216528F0C}.Release|x86.ActiveCfg = Release|Win32
+		{147AA998-03F3-435B-BB04-C00216528F0C}.Release|x86.Build.0 = Release|Win32
+		{147AA998-03F3-435B-BB04-C00216528F0C}.Template|x86.ActiveCfg = Template|Win32
+		{147AA998-03F3-435B-BB04-C00216528F0C}.Template|x86.Build.0 = Template|Win32
+		{EB477D53-49E9-4260-859F-4A71C006F476}.Release|x86.ActiveCfg = Release|Win32
+		{EB477D53-49E9-4260-859F-4A71C006F476}.Release|x86.Build.0 = Release|Win32
+		{EB477D53-49E9-4260-859F-4A71C006F476}.Template|x86.ActiveCfg = Template|Win32
+		{EB477D53-49E9-4260-859F-4A71C006F476}.Template|x86.Build.0 = Template|Win32
+		{5A94F19C-1108-4A37-9B75-8C8666203C72}.Release|x86.ActiveCfg = Release|Win32
+		{5A94F19C-1108-4A37-9B75-8C8666203C72}.Release|x86.Build.0 = Release|Win32
+		{5A94F19C-1108-4A37-9B75-8C8666203C72}.Template|x86.ActiveCfg = Template|Win32
+		{5A94F19C-1108-4A37-9B75-8C8666203C72}.Template|x86.Build.0 = Template|Win32
+		{54F315FB-C6F3-4D93-83C2-834B1ACC4704}.Release|x86.ActiveCfg = Release|Win32
+		{54F315FB-C6F3-4D93-83C2-834B1ACC4704}.Release|x86.Build.0 = Release|Win32
+		{54F315FB-C6F3-4D93-83C2-834B1ACC4704}.Template|x86.ActiveCfg = Template|Win32
+		{54F315FB-C6F3-4D93-83C2-834B1ACC4704}.Template|x86.Build.0 = Template|Win32
+		{9F063B17-FDD3-4577-B59F-BB8C4EC84AA1}.Release|x86.ActiveCfg = Release|Win32
+		{9F063B17-FDD3-4577-B59F-BB8C4EC84AA1}.Release|x86.Build.0 = Release|Win32
+		{9F063B17-FDD3-4577-B59F-BB8C4EC84AA1}.Template|x86.ActiveCfg = Template|Win32
+		{9F063B17-FDD3-4577-B59F-BB8C4EC84AA1}.Template|x86.Build.0 = Template|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A640877-1FA5-4E4F-99C8-E3B93FBE7EA4}
+	EndGlobalSection
+EndGlobal
