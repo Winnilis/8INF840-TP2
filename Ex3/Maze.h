@@ -47,5 +47,6 @@ private:
 
 	static pair<int, int> getNeighbourPosition(pair<int, int> position, int direction);
 	static int getOppositeDirection(int direction);
+	static int getManhattanDistanceToEnd(pair<int, int> position, pair<int, int> end);
 	static int revertHorizontalBits(int direction);
 };
