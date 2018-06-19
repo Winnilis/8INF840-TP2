@@ -123,9 +123,11 @@ public:
 
 				if (elem.node != 0)
 				{
-					stack.push({ elem.level + 1, elem.node->rightChild });
-					stack.push({ elem.level + 1, elem.node->leftChild });
-
+					if (elem.node->leftChild != 0 || elem.node->rightChild != 0)
+					{
+						stack.push({ elem.level + 1, elem.node->rightChild });
+						stack.push({ elem.level + 1, elem.node->leftChild });
+					}
 					os << elem.node->data;
 				}
 
