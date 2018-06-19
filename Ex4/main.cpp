@@ -11,6 +11,7 @@ int main(int /*argc*/, char ** argv)
 	cin >> imageToLoadPath;
 	ImageToQuadTree* image = new ImageToQuadTree(imageToLoadPath);
 	image->makeTree();
+	//Uncomment if you want to display the quadTree, careful it takes a long time
 	//image->displayQuadTree();
 	cout << "Path of the picture to save : ";
 	cin >> imageToSavePath;
